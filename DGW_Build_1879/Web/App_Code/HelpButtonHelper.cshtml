@@ -1,0 +1,51 @@
+﻿@using DealerGateway.Domain.Models
+@using DealerGateway.Domain.Resources
+@using DealerGateway.Domain.Utilities
+
+
+@helper DisplayHelpButton(string context){
+    int erpType = -1;
+    HttpContext ctx = HttpContext.Current;
+    if ((ctx.Session != null) && (ctx.Session["CurrentUser"] != null))
+    {
+        GatewayUser user = (GatewayUser)ctx.Session["CurrentUser"];
+        erpType = user.ErpType;
+    }
+    else if (User.IsInRole("SiteAdministrator") || User.IsInRole("SiteTester"))
+    {
+        erpType = DGUtils.DealerERP.EA;
+    }
+
+    string erp = string.Empty;
+    
+    switch(erpType)
+    {
+        case(DGUtils.DealerERP.EA):
+            erp = "DGW-EA";
+            break;
+        case (DGUtils.DealerERP.OMD):
+            erp = "DGW-EA";
+            break;
+        case (DGUtils.DealerERP.LMS):
+            erp = "DGW-EA";
+            break;            
+    }
+    
+    if(!string.IsNullOrEmpty(context))
+    {
+        context = "#html/" + context;
+    }
+        
+    if(erpType > -1)
+    {
+        string helpLink = "/WebHelp/" + @erp + "/Dealer_Gateway.htm" + @context;
+        
+        <div id="divDealerGatewayHelp">
+            <span class="toolBtnTiny btnRoundSmall">
+		        <a target="_blank" href="@helpLink" title="@ResStrings.HELP">
+			        <img alt="" id="img_help" src="~/Content/Images/Book-04.png" style="width: 24px; height: 24px;" class="btnBarBackgroundPlainTiny">
+		        </a>
+	        </span>
+        </div>
+    }
+}
