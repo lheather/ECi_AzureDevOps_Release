@@ -1,0 +1,47 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="ECi.Serialized.ServicesRouter.Web.Administration.Admin" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <script type="text/javascript" src="<%=ResolveClientUrl("~/Administration/Assets/jquery-1.4.4.min.js") %>"></script>
+    <script type="text/javascript" src="<%=ResolveClientUrl("~/Administration/Assets/jquery-ui-1.8.9.custom.min.js") %>"></script>
+    <script type="text/javascript" src="<%=ResolveClientUrl("~/Administration/Assets/site-1.2.0.0.js") %>"></script>
+    <link href="<%=ResolveClientUrl("~/Administration/Assets/jquery-ui-1.8.9.custom.css") %>" rel="Stylesheet" type="text/css" />
+    <link href="<%=ResolveClientUrl("~/Administration/Assets/site-1.2.0.0.css") %>" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .center { text-align: center; }
+        .right { text-align: right; }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <h1>
+            ECi ESN Administration - <asp:Label ID="lblHeader" runat="server" /></h1>
+        <div class="right">           
+            Welcome <asp:LoginName ID="LoginName1" runat="server" /> | <a href="ChangePassword.aspx">Change Password</a> | <asp:LoginStatus ID="LoginStatus1" OnLoggedOut="LoginStatus1_LoggedOut" runat="server" />
+        </div>
+        <div>
+            <ul>
+                <li id="DashboardBullet" runat="server"><asp:HyperLink runat="server" ID="DashboardHyperLink"  Text="Dashboard" /></li>
+                <li id="VendorBullet" runat="server"><asp:HyperLink runat="server" ID="VendorEditHyperlink"  Text="Manage Vendors" /></li>
+                <li id="DealersBullet" runat="server"><asp:HyperLink runat="server" ID="DealerMgmtHyperLink"  Text="Manage Dealers and Dealer Services" /></li>
+                <li id="ActivityLogBullet" runat="server"><asp:HyperLink runat="server" ID="ActivityLogLink" Text="Activity Logs" /></li>
+                <li ID="AutoUpdateBullet" runat="server"><asp:HyperLink runat="server" ID="AutoUpdateLink" Text="Auto-Update Management" /></li>
+                <li id="ManageUsersBullet" runat="server"><asp:HyperLink runat="server" ID="ManageUsers" Text="Manage Users" /></li>
+            </ul>
+        </div>
+        <div>
+            <asp:ScriptManager ID="ScriptManager1" runat="server" />
+            <asp:ContentPlaceHolder ID="cph1" runat="server" />
+        </div>
+        <div class="clear"><br/></div>
+        <div id="footer" class="center">
+            <div class="alignCenter">&copy; <%=DateTime.Now.Year%> - ECi Software Solutions, Inc. All rights reserved</div>
+            <div class="alignCenter" style="font-size:smaller;">Version <asp:Label ID="lblFooter" runat="server" /></div>
+        </div>
+    </form>
+</body>
+</html>

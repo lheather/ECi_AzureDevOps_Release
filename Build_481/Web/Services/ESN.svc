@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="ECi.Serialized.ServicesRouter.Web.Services.ESNService" CodeBehind="ESN.svc.cs" %>
