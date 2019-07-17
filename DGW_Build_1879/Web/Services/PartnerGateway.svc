@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="DealerGateway.WebUI.Services.PartnerGateway" CodeBehind="PartnerGateway.svc.cs" %>
